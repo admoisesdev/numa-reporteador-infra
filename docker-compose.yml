@@ -7,6 +7,8 @@ services:
       - "80:80"
     environment:
       VITE_BACKEND_URL: http://34.71.107.222:3000/api
+    depends_on:
+    - backend
     networks:
       - app-network
     restart: unless-stopped
