@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     environment:
-      - VITE_BACKEND_URL: http://34.71.107.222:3000/api
+      VITE_BACKEND_URL: http://34.71.107.222:3000/api
     networks:
       - app-network
   backend:
@@ -14,10 +14,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL: postgresql://postgres:admin123@postgres:5432/numadb?schema=public&connection_limit=5&pool_timeout=2&query_timeout=5000
-      - FRONTEND_URL: http://34.71.107.222
-      - JWT_SECRET: 3x@mpl3$3cur3JWTs3cr3t!1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
-      - PORT: 3000
+      DATABASE_URL: postgresql://postgres:admin123@postgres:5432/numadb?schema=public&connection_limit=5&pool_timeout=2&query_timeout=5000
+      FRONTEND_URL: http://34.71.107.222
+      JWT_SECRET: 3x@mpl3$3cur3JWTs3cr3t!1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+      PORT: 3000
     depends_on:
       postgres:
         condition: service_healthy
