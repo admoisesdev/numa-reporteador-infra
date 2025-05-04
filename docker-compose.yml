@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     environment:
-      VITE_BACKEND_URL: http://34.71.107.222:3000/api
+      VITE_BACKEND_URL: /api
     depends_on:
     - backend
     networks:
@@ -22,7 +22,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: postgresql://postgres:admin123@postgres:5432/numadb?schema=public&connection_limit=5&pool_timeout=2&query_timeout=5000
+      DATABASE_URL: postgresql://postgres:admin123@34.71.107.222:5433/numadb?schema=public&connection_limit=20&pool_timeout=5&query_timeout=5000
       FRONTEND_URL: http://34.71.107.222
       JWT_SECRET: 3x@mpl3$3cur3JWTs3cr3t!1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
       PORT: 3000
@@ -49,7 +49,7 @@ services:
       POSTGRES_DB: "postgres"
     command: >-
       postgres
-      -c max_connections=100
+      -c max_connections=200
       -c shared_buffers=1GB
       -c work_mem=16MB
       -c idle_in_transaction_session_timeout=60s
@@ -65,7 +65,7 @@ services:
       - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 5
 
