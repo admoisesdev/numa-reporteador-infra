@@ -1,5 +1,11 @@
 #!/bin/bash
 SERVICE=$1
 cd /home/numa-desarrollo
-docker-compose build $SERVICE
-docker-compose up -d --no-deps $SERVICE
+
+
+# Reconstruye e inicia con limpieza de cache
+docker-compose build --no-cache $SERVICE
+docker-compose up -d --force-recreate $SERVICE
+
+# Verifica que esté corriendo
+docker ps --filter "name=${SERVICE}"
