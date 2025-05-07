@@ -44,7 +44,7 @@ services:
       POSTGRES_SUPERUSER_RESERVED_CONNECTIONS: "5"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "admin123"
-      POSTGRES_DB: "postgres"
+      POSTGRES_DB: "numadb"
     command: >-
       postgres
       -c max_connections=200
@@ -57,12 +57,13 @@ services:
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - /tmp:/tmp
     networks:
       - app-network
     ports:
       - "5433:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d numadb"]
       interval: 5s
       timeout: 5s
       retries: 5
