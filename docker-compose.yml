@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    build: ./numa-reporteador-frontend
+    build: ./app-numa-f
     ports:
       - "80:80"
     environment:
@@ -16,7 +16,7 @@ services:
       timeout: 10s
       retries: 3
   backend:
-    build: ./numa-reporteador-backend
+    build: ./app-numa-b
     ports:
       - "3000:3000"
     environment:
