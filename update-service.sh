@@ -1,6 +1,6 @@
 #!/bin/bash
 SERVICE=$1
-cd /home/numa-desarrollo
+cd /home/desarrolloapp2025
 
 # Reconstruye e inicia con limpieza de cache
 docker-compose build --no-cache $SERVICE

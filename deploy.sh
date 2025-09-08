@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/numa-desarrollo
+cd /home/desarrolloapp2025
 docker-compose down
 docker-compose up -d --build
-chmod -R 755 /home/numa-desarrollo
+chmod -R 755 /home/desarrolloapp2025
